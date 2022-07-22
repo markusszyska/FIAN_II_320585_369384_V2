@@ -36,12 +36,12 @@ public class ShoppingPanel extends JPanel {
 		this.setOpaque(true);
 
 		this.setDisplayPanel(new JPanel());
+		/**
+		 * @toDo
+		 * GridLayout mit der Laenge der Liste initialisieren
+		 */
 		this.getDisplayPanel().setLayout(new GridLayout(10,1));
-//		this.getDisplayPanel().setBounds(0, 0, 1008, 10000);
-//		this.getDisplayPanel().setOpaque(true);
-//		this.getDisplayPanel().setBackground(Color.black);
-		
-		
+				
 		JScrollPane sPane = new JScrollPane();
 		sPane.setBounds(0, 0, 1008, 618);
 		sPane.setViewportView(this.getDisplayPanel());
