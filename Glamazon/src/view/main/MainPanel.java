@@ -2,17 +2,10 @@ package view.main;
 
 import javax.swing.JPanel;
 
-import view.shopping.HeaderPanel;
-import view.shopping.ShoppingPanel;
-
 public class MainPanel extends JPanel{
 	private HeaderPanel headerPanel;
 	private CardPanel cardPanel;
-	/**
-	 * @toDO
-	 * WarenkorbPanel
-	 * KassePanel
-	 */
+	private MenuPanel menuPanel;
 		
 	public HeaderPanel getHeaderPanel() {
 		return headerPanel;
@@ -27,6 +20,13 @@ public class MainPanel extends JPanel{
 	public void setCardPanel(CardPanel cardPanel) {
 		this.cardPanel = cardPanel;
 	}
+	
+	public MenuPanel getMenuPanel() {
+		return menuPanel;
+	}
+	public void setMenuPanel(MenuPanel menuPanel) {
+		this.menuPanel = menuPanel;
+	}
 	public MainPanel() {
 		this.setLayout(null);
 		this.setBounds(0, 0, 1024, 768);
@@ -37,7 +37,8 @@ public class MainPanel extends JPanel{
 		this.setCardPanel(new CardPanel());
 		this.add(this.getCardPanel());
 		
-		
+		this.setMenuPanel(new MenuPanel());
+		this.add(this.getMenuPanel());
 	}
 	
 }

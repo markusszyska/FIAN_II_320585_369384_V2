@@ -1,4 +1,4 @@
-package view.shopping;
+package view.main;
 
 import java.awt.Color;
 import java.awt.Dimension;
