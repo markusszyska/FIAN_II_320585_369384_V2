@@ -1,4 +1,4 @@
-package view;
+package view.main;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;

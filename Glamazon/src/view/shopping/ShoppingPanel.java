@@ -1,4 +1,4 @@
-package view;
+package view.shopping;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;

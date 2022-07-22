@@ -2,7 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 
-import view.MainView;
+import view.main.MainView;
 
 public class MainController {
 	private MainView mainView;

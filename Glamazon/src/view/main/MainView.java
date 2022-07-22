@@ -1,21 +1,15 @@
-package view;
+package view.main;
 
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import view.shopping.ShoppingPanel;
+
 public class MainView extends JFrame {
 
-	private ShoppingPanel shoppingPanel;
+	private MainPanel mainPanel;
 	private StartPanel startPanel;
-
-	public ShoppingPanel getShoppingPanel() {
-		return shoppingPanel;
-	}
-
-	public void setShoppingPanel(ShoppingPanel shoppingPanel) {
-		this.shoppingPanel = shoppingPanel;
-	}
 
 	public StartPanel getStartPanel() {
 		return startPanel;
@@ -25,10 +19,18 @@ public class MainView extends JFrame {
 		this.startPanel = startPanel;
 	}
 
+	public MainPanel getMainPanel() {
+		return mainPanel;
+	}
+
+	public void setMainPanel(MainPanel mainPanel) {
+		this.mainPanel = mainPanel;
+	}
+
 	public MainView() {
 		this.setBounds(400, 300, 1024, 768);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setShoppingPanel(new ShoppingPanel());
+		this.setMainPanel(new MainPanel());
 		this.setStartPanel(new StartPanel());
 		this.setContentPane(this.getStartPanel());
 		
@@ -36,16 +38,17 @@ public class MainView extends JFrame {
 	}
 
 	public void addActionListenerToStartButton(ActionListener al) {
-		this.getStartPanel().addActionListenerToStartButton(al);		
+		this.getStartPanel().addActionListenerToStartButton(al);
 	}
+
 	public void addActionListenerToReturnToStartButton(ActionListener al) {
-		this.getShoppingPanel().addActionListenerToStartButton(al);		
+		
 	}
 
 	public void showShoppingPanel() {
-		this.setContentPane(this.getShoppingPanel());
+		this.setContentPane(this.getMainPanel());
 	}
-	
+
 	public void showStartPanel() {
 		this.setContentPane(this.getStartPanel());
 	}
