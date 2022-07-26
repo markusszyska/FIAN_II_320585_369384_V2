@@ -18,7 +18,7 @@ public class Network {
 		Person2 p1 = new Person2();	
 		p1.p = p1;
 		
-		System.out.println(p1.p.p.p.p.p.p == p1.p.p.p.p);
+		System.out.println(p1.p.p.p.p.p.p == p1.p.p.p.p); //true
 	}
 
 	void go(Network n1) {
