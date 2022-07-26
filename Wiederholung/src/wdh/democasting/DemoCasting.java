@@ -30,10 +30,11 @@ public class DemoCasting {
 	}
 }
 class A{
-	
+	void go(int i) {}
 }
 class B extends A{
 	String text = "Hallo Welt";
+	void go(String s) {}
 }
 class C extends B {
 	
