@@ -36,6 +36,10 @@ public class MenuPanel extends JPanel{
 		this.setMenuBar(new JMenuBar());
 		this.getMenuBar().setBounds(0, 0, 1024, 30);
 		this.setMenuList(new ArrayList<>());
+		/**
+		 * @toDo
+		 * Benannte Kategorien
+		 */
 		String[] menues = {"Kat 1", "Kat 2" , "Kat 3"};
 //		for(String s : menues) {
 //			this.getMenuBar().add(new JMenu(s));
