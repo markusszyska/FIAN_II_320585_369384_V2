@@ -79,7 +79,7 @@ public class ArtikelPanel extends JPanel {
 		this.add(this.getLblProductPicture());
 		
 		this.setLblProductName(new JLabel("Produktname"));
-		this.setBounds(122, 2, 73, 23);
+		this.getLblProductName().setBounds(122, 2, 73, 23);
 		this.add(this.getLblProductName());
 		
 		this.setLblProductText(new JLabel("Produkttext"));
@@ -103,8 +103,14 @@ public class ArtikelPanel extends JPanel {
 		SpinnerNumberModel model = new SpinnerNumberModel(0, 0, 100, 1);
 		this.setSpinner(new JSpinner(model));
 		this.getSpinner().setBounds(907, 27, 50, 20);
-		this.add(this.getSpinner());
-		
+		this.add(this.getSpinner());		
 	}
-
+	
+	public ArtikelPanel(String bild,String artikelName ,String produktText, double preis) {
+		this();
+		this.getLblProductPicture().setText(bild);
+		this.getLblProductName().setText(artikelName);
+		this.getLblProductText().setText(produktText);
+		this.getLblPreis().setText("€ " + preis);		
+	}
 }
