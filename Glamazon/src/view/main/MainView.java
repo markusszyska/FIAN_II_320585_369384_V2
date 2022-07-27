@@ -33,7 +33,7 @@ public class MainView extends JFrame {
 		this.setMainPanel(new MainPanel());
 		this.setStartPanel(new StartPanel());
 		this.setContentPane(this.getStartPanel());
-		
+
 		this.setVisible(true);
 	}
 
@@ -42,14 +42,32 @@ public class MainView extends JFrame {
 	}
 
 	public void addActionListenerToReturnToStartButton(ActionListener al) {
-		
+
 	}
 
-	public void showShoppingPanel() {
+	public void addActionListenerToCartBtn(ActionListener al) {
+		this.getMainPanel().addActionListenerToCartBtn(al);
+	}
+
+	public void addActionListenerToBtnSuchen(ActionListener al) {
+		this.getMainPanel().addActionListenerToBtnSuchen(al);	
+	}
+
+	public void showMainPanel() {
 		this.setContentPane(this.getMainPanel());
 	}
 
 	public void showStartPanel() {
 		this.setContentPane(this.getStartPanel());
 	}
+
+	public void showCartPanel() {
+		this.getMainPanel().showCartPanel();		
+	}
+
+	public void showShoppingPanel() {
+		this.getMainPanel().showShoppingPanel();
+	}
+
+
 }

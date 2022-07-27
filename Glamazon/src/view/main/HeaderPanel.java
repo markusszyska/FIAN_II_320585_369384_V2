@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -71,5 +72,12 @@ public class HeaderPanel extends JPanel {
 		this.add(this.getBtnWarenkorb());
 		
 
+	}
+	public void addActionListenerToCartBtn(ActionListener al) {
+		this.getBtnWarenkorb().addActionListener(al);	
+	}
+
+	public void addActionListenerToBtnSuchen(ActionListener al) {
+		this.getBtnSuchen().addActionListener(al);
 	}
 }

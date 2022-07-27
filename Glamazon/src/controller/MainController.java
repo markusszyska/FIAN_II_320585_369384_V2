@@ -19,13 +19,23 @@ public class MainController {
 		this.setMainView(new MainView());	
 		this.getMainView().addActionListenerToStartButton(this::startShopping);
 		this.getMainView().addActionListenerToReturnToStartButton(this::returnToStart);
+		this.getMainView().addActionListenerToCartBtn(this::showCartPanel);
+		this.getMainView().addActionListenerToBtnSuchen(this::showShoppingPanel);
 	}
 	
 	private void startShopping(ActionEvent e) {
-		this.getMainView().showShoppingPanel();
+		this.getMainView().showMainPanel();
 	}
 	
 	private void returnToStart(ActionEvent e) {
 		this.getMainView().showStartPanel();
+	}
+	
+	private void showCartPanel(ActionEvent e) {
+		this.getMainView().showCartPanel();
+	}
+	
+	private void showShoppingPanel(ActionEvent e) {
+		this.getMainView().showShoppingPanel();
 	}
 }

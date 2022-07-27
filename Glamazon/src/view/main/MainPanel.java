@@ -1,5 +1,7 @@
 package view.main;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.JPanel;
 
 public class MainPanel extends JPanel{
@@ -39,6 +41,19 @@ public class MainPanel extends JPanel{
 		
 		this.setMenuPanel(new MenuPanel());
 		this.add(this.getMenuPanel());
+	}
+	public void addActionListenerToCartBtn(ActionListener al) {
+		this.getHeaderPanel().addActionListenerToCartBtn(al);		
+	}
+	public void addActionListenerToBtnSuchen(ActionListener al) {
+		this.getHeaderPanel().addActionListenerToBtnSuchen(al);
+	}
+	
+	public void showCartPanel() {
+		this.getCardPanel().showCartPanel();
+	}
+	public void showShoppingPanel() {
+		this.getCardPanel().showShoppingPanel();
 	}
 	
 }
