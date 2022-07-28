@@ -40,7 +40,7 @@ public class ShoppingPanel extends JPanel {
 		 * @toDo
 		 * GridLayout mit der Laenge der Liste initialisieren
 		 */
-		this.getDisplayPanel().setLayout(new GridLayout(3,1));
+		this.getDisplayPanel().setLayout(new GridLayout(20,1));
 				
 		JScrollPane sPane = new JScrollPane();
 		sPane.setBounds(0, 0, 1008, 618);
@@ -58,20 +58,22 @@ public class ShoppingPanel extends JPanel {
 	public void showSearchResults(String bild,String name, String productText, double preis) {
 		this.getArtikelList().clear();
 		if(bild.equals("Kat1 ")) {
-			System.out.println("Initialisiere Kat1");
 			for (int i = 0; i < 5; i++) {
 				this.getArtikelList().add(new ArtikelPanel(bild + " " + i, name + " " + i, productText + " " + i, preis));
 			}			
 		}else if(bild.equals("Kat2 ")) {
-			System.out.println("Initialisiere Kat2");
-			for (int i = 0; i < 8; i++) {
+			for (int i = 0; i < 18; i++) {
 				this.getArtikelList().add(new ArtikelPanel(bild + " " + i, name + " " + i, productText + " " + i, preis));
 			}
 		}
-		System.out.println(this.getArtikelList().size());
+		//Alle ArtikelPanel entfernen
 		this.getDisplayPanel().removeAll();
+		//Dem AnzeigePanel ein neues GridLayout geben, da so viele Zeilen benoetigt werden, 
+		//wie Panels in der Liste sind.
 		this.getDisplayPanel().setLayout(new GridLayout(this.getArtikelList().size(), 1));
+		//Dem AnzeigePanel die Artikelpanel hinzufuegen.
 		this.getArtikelList().forEach(item->this.getDisplayPanel().add(item));
+		//Das Anzeigepanel muss neu gemalt werden.
 		this.revalidate();
 		this.repaint();
 	}

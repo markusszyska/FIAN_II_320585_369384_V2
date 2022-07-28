@@ -1,5 +1,6 @@
 package view.warenkorb;
 
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -41,6 +42,10 @@ public class WarenkorbHeader extends JPanel {
 		this.getBtnZurKasse().setBounds(907, 9, 100, 23);
 		this.add(this.getBtnZurKasse());		
 		
+	}
+
+	public void addActionListenerToBtnKasse(ActionListener al) {
+		this.getBtnZurKasse().addActionListener(al);	
 	}
 	
 	

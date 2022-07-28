@@ -17,42 +17,47 @@ public class MainController {
 	public void setMainView(MainView mainView) {
 		this.mainView = mainView;
 	}
-	
+
 	public MainController() {
-		this.setMainView(new MainView());	
+		this.setMainView(new MainView());
 		this.getMainView().addActionListenerToStartButton(this::startShopping);
-		this.getMainView().addActionListenerToReturnToStartButton(this::returnToStart);
+//		this.getMainView().addActionListenerToReturnToStartButton(this::returnToStart); Kann weg
 		this.getMainView().addActionListenerToCartBtn(this::showCartPanel);
 		this.getMainView().addActionListenerToBtnSuchen(this::showShoppingPanel);
-		
+		this.getMainView().addActionListenerToBtnKasse(this::showKassePanel);
 		this.getMainView().getMainPanel().getMenuPanel().getMenuList().get(0).addActionListener(this::kat1);
 		this.getMainView().getMainPanel().getMenuPanel().getMenuList().get(1).addActionListener(this::kat2);
-	
-		
+
 	}
-	
+
 	private void startShopping(ActionEvent e) {
 		this.getMainView().showMainPanel();
 	}
-	
-	private void returnToStart(ActionEvent e) {
-		this.getMainView().showStartPanel();
-	}
-	
+
+//	private void returnToStart(ActionEvent e) {
+//		this.getMainView().showStartPanel();
+//	}
+
 	private void showCartPanel(ActionEvent e) {
 		this.getMainView().showCartPanel();
 	}
-	
+
 	private void showShoppingPanel(ActionEvent e) {
 		this.getMainView().showShoppingPanel();
 	}
-	
+
+	private void showKassePanel(ActionEvent e) {
+		this.getMainView().showKassePanel();
+	}
+
 	private void kat1(ActionEvent e) {
-		this.getMainView().getMainPanel().getCardPanel().getShoppingPanel().showSearchResults("Kat1 ", "Kat1 ", "Kat1 ", 0);
+		this.getMainView().getMainPanel().getCardPanel().getShoppingPanel().showSearchResults("Kat1 ", "Kat1 ", "Kat1 ",
+				0);
 	}
-	
+
 	private void kat2(ActionEvent e) {
-		this.getMainView().getMainPanel().getCardPanel().getShoppingPanel().showSearchResults("Kat2 ", "Kat2 ", "Kat2 ", 0);
+		this.getMainView().getMainPanel().getCardPanel().getShoppingPanel().showSearchResults("Kat2 ", "Kat2 ", "Kat2 ",
+				0);
 	}
-	
+
 }

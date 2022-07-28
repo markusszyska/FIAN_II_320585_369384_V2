@@ -1,6 +1,7 @@
 package view.warenkorb;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +61,10 @@ public class WarenkorbPanel extends JPanel {
 			this.getCartPanel().add(this.getCartItems().get(i));
 		}
 		
+	}
+
+	public void addActionListenerToBtnKasse(ActionListener al) {
+		this.getWkHeader().addActionListenerToBtnKasse(al);
 	}
 
 }

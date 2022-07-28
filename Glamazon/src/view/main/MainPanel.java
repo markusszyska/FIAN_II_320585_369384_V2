@@ -48,12 +48,18 @@ public class MainPanel extends JPanel{
 	public void addActionListenerToBtnSuchen(ActionListener al) {
 		this.getHeaderPanel().addActionListenerToBtnSuchen(al);
 	}
+	public void addActionListenerToBtnKasse(ActionListener al) {
+		this.getCardPanel().addActionListenerToBtnKasse(al);
+	}
 	
 	public void showCartPanel() {
 		this.getCardPanel().showCartPanel();
 	}
 	public void showShoppingPanel() {
 		this.getCardPanel().showShoppingPanel();
+	}
+	public void showKassePanel() {
+		this.getCardPanel().showKassePanel();		
 	}
 	
 }

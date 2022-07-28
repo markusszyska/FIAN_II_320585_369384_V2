@@ -1,9 +1,11 @@
 package view.main;
 
 import java.awt.CardLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import view.kasse.KassePanel;
 import view.shopping.ShoppingPanel;
 import view.warenkorb.WarenkorbPanel;
 
@@ -11,12 +13,13 @@ public class CardPanel extends JPanel{
 	private ShoppingPanel shoppingPanel;
 	private WarenkorbPanel cartPanel;
 	private CardLayout cardLayout;
+	private KassePanel kassePanel;
 	
 	private final String shopping = "shopping";
 	private final String cart = "cart";
+	private final String kasse = "kasse";
 	/**
 	 * @toDO
-	 * WarenkorbPanel
 	 * KassePanel
 	 */
 	public ShoppingPanel getShoppingPanel() {
@@ -37,26 +40,38 @@ public class CardPanel extends JPanel{
 	}
 	public void setCardLayout(CardLayout cardLayout) {
 		this.cardLayout = cardLayout;
+	}	
+	public KassePanel getKassePanel() {
+		return kassePanel;
 	}
-	
+	public void setKassePanel(KassePanel kassePanel) {
+		this.kassePanel = kassePanel;
+	}
 	public CardPanel() {
-		this.setLayout(new CardLayout());
+		this.setCardLayout(new CardLayout());
+		this.setLayout(this.getCardLayout());
 		this.setBounds(0, 150, 1008, 580);
-		
-		this.setCardLayout((CardLayout)this.getLayout());
-		
+				
 		this.setShoppingPanel(new ShoppingPanel());
 		this.add(this.getShoppingPanel(), this.shopping);
 		
 		this.setCartPanel(new WarenkorbPanel());
 		this.add(this.getCartPanel(), this.cart);
 		
+		this.setKassePanel(new KassePanel());
+		this.add(this.getKassePanel(), this.kasse);
 	}
 	public void showCartPanel() {
 		this.getCardLayout().show(this, this.cart);		
 	}
 	public void showShoppingPanel() {
 		this.getCardLayout().show(this, this.shopping);
+	}
+	public void showKassePanel() {
+		this.getCardLayout().show(this, this.kasse);		
+	}
+	public void addActionListenerToBtnKasse(ActionListener al) {
+		this.getCartPanel().addActionListenerToBtnKasse(al);		
 	}
 	
 	
