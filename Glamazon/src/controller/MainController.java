@@ -21,7 +21,6 @@ public class MainController {
 	public MainController() {
 		this.setMainView(new MainView());
 		this.getMainView().addActionListenerToStartButton(this::startShopping);
-//		this.getMainView().addActionListenerToReturnToStartButton(this::returnToStart); Kann weg
 		this.getMainView().addActionListenerToCartBtn(this::showCartPanel);
 		this.getMainView().addActionListenerToBtnSuchen(this::showShoppingPanel);
 		this.getMainView().addActionListenerToBtnKasse(this::showKassePanel);
@@ -33,10 +32,6 @@ public class MainController {
 	private void startShopping(ActionEvent e) {
 		this.getMainView().showMainPanel();
 	}
-
-//	private void returnToStart(ActionEvent e) {
-//		this.getMainView().showStartPanel();
-//	}
 
 	private void showCartPanel(ActionEvent e) {
 		this.getMainView().showCartPanel();

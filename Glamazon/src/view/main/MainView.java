@@ -41,10 +41,6 @@ public class MainView extends JFrame {
 		this.getStartPanel().addActionListenerToStartButton(al);
 	}
 	
-	//Kann weg
-//	public void addActionListenerToReturnToStartButton(ActionListener al) {
-//
-//	}
 	public void addActionListenerToCartBtn(ActionListener al) {
 		this.getMainPanel().addActionListenerToCartBtn(al);
 	}
