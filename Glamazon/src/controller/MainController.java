@@ -1,15 +1,14 @@
 package controller;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 
-import javax.swing.JMenu;
-
+import model.MainModel;
 import view.main.MainView;
 
 public class MainController {
 	private MainView mainView;
-
+	private MainModel model;
+	
 	public MainView getMainView() {
 		return mainView;
 	}
@@ -17,9 +16,18 @@ public class MainController {
 	public void setMainView(MainView mainView) {
 		this.mainView = mainView;
 	}
+	
+	public MainModel getModel() {
+		return model;
+	}
+
+	public void setModel(MainModel model) {
+		this.model = model;
+	}
 
 	public MainController() {
 		this.setMainView(new MainView());
+		this.setModel(new MainModel());
 		this.getMainView().addActionListenerToStartButton(this::startShopping);
 		this.getMainView().addActionListenerToCartBtn(this::showCartPanel);
 		this.getMainView().addActionListenerToBtnSuchen(this::showShoppingPanel);

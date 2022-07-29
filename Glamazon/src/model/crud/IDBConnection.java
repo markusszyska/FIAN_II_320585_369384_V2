@@ -3,5 +3,5 @@ package model.crud;
 import java.sql.ResultSet;
 
 public interface IDBConnection {
-	String getAllArtikel();
+	ResultSet getAllArtikel() throws Exception;
 }

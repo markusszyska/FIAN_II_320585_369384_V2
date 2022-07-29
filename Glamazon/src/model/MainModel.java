@@ -1,25 +1,19 @@
 package model;
 
 import model.crud.DataLoader;
-import model.crud.SQLiteConnection;
+import model.data.Sortiment;
 
 public class MainModel {
 	
-	
-	
 	public MainModel() {
-		
-		
+			
 	}
 	
-	public void ladeSortiment() {
-//		DataLoader dl = new DataLoader(new SQLiteConnection());
-//		dl.getDataFromDatabase();
+	public Sortiment ladeSortiment() {
+		DataLoader dl = new DataLoader();
+		Sortiment s = dl.getArtikelFromDataBase();
+		return s;
 	}
 	
-	
-	public static void main(String[] args) {
-		MainModel m = new MainModel();
-		m.ladeSortiment();
-	}
+
 }

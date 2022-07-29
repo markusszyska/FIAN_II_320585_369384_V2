@@ -1,36 +1,46 @@
 package model.crud;
 
+import java.sql.ResultSet;
+
+import model.data.Artikel;
+import model.data.Sortiment;
+
 public class DataLoader {
-	
+	/**
+	 * @Ray Bitte zum Singleton umbauen
+	 */
 	private IDBConnection con;
-	
-	public DataLoader(Class<?> c) {
-		
+
+	public IDBConnection getCon() {
+		return con;
 	}
-	
-	public String getDataFromDatabase() {
-		return this.con.getAllArtikel();
+
+	public void setCon(IDBConnection con) {
+		this.con = con;
+	}
+
+	public DataLoader() {
+		this.setCon(new SQLiteConnection());
+	}
+
+	public Sortiment getArtikelFromDataBase() {
+		Sortiment sortiment = new Sortiment();
+//		sortiment.getAlleArtikel().add(new Artikel("..."));
+		try {
+			ResultSet res = this.getCon().getAllArtikel();
+			while (res.next()) {
+				System.out.print("Datensatz: Id: " + res.getInt(1) + " Mwst Id: " + res.getInt(2) + " Name: "
+						+ res.getString(3) + " Beschreibung: " + res.getString(4) + " Preis: " + res.getDouble(5) + "\n");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sortiment;
 	}
 	
 	public static void main(String[] args) {
-		Kellner k = new Kellner(Weisswein.class);
+		DataLoader dl = new DataLoader();
+		dl.getArtikelFromDataBase();
 	}
-}
-class Kellner{
-	Wein wein;
-	
-	public Kellner(Class<?>c) {
-		this.wein = new Weisswein();
-	}
-}
 
-class Wein{
-	
-}
-
-class Weisswein extends Wein{
-	
-}
-class Rotwein extends Wein{
-	
 }
