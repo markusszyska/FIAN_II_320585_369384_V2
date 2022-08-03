@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import model.data.Artikel;
 
 public class SQLiteConnection implements IDBConnection {
 
@@ -26,13 +29,36 @@ public class SQLiteConnection implements IDBConnection {
 			e.printStackTrace();
 		}
 	}
-
+	
 	@Override
-	public ResultSet getAllArtikel() throws SQLException {
-		Statement stm = this.getConnection().createStatement();
-		String sql = "SELECT * FROM artikel";
-		ResultSet res = stm.executeQuery(sql);		
-		return res;
+	public ArrayList<Artikel> getAllArtikel() {
+		ArrayList<Artikel> artikelliste = new ArrayList<Artikel>();
+		
+		try {
+			Statement stm = this.getConnection().createStatement();
+			String sql = "SELECT * FROM artikel";
+			ResultSet res = stm.executeQuery(sql);
+			
+			while(res.next()) {		
+				
+				Artikel artikel = new Artikel();
+				artikel.setArtikelId(res.getInt(1));
+				artikel.setMwst(res.getInt(2));
+				artikel.setArtName(res.getString(3));
+				artikel.setArtBeschreibung(res.getString(4));
+				artikel.setPreis(res.getDouble(5));
+				
+				System.out.println(artikel);
+				
+				artikelliste.add(artikel);
+				
+				
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return artikelliste;
 	}
 
 }

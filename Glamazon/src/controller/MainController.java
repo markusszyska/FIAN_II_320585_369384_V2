@@ -34,7 +34,8 @@ public class MainController {
 		this.getMainView().addActionListenerToBtnKasse(this::showKassePanel);
 		this.getMainView().getMainPanel().getMenuPanel().getMenuList().get(0).addActionListener(this::kat1);
 		this.getMainView().getMainPanel().getMenuPanel().getMenuList().get(1).addActionListener(this::kat2);
-
+		
+		this.getModel().ladeSortiment();
 	}
 
 	private void startShopping(ActionEvent e) {

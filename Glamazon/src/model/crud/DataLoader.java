@@ -1,6 +1,6 @@
 package model.crud;
 
-import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import model.data.Artikel;
 import model.data.Sortiment;
@@ -25,22 +25,9 @@ public class DataLoader {
 
 	public Sortiment getArtikelFromDataBase() {
 		Sortiment sortiment = new Sortiment();
-//		sortiment.getAlleArtikel().add(new Artikel("..."));
-		try {
-			ResultSet res = this.getCon().getAllArtikel();
-			while (res.next()) {
-				System.out.print("Datensatz: Id: " + res.getInt(1) + " Mwst Id: " + res.getInt(2) + " Name: "
-						+ res.getString(3) + " Beschreibung: " + res.getString(4) + " Preis: " + res.getDouble(5) + "\n");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		ArrayList<Artikel> artikelliste = this.getCon().getAllArtikel();
+		sortiment.setAlleArtikel(artikelliste);	
+		
 		return sortiment;
 	}
-	
-	public static void main(String[] args) {
-		DataLoader dl = new DataLoader();
-		dl.getArtikelFromDataBase();
-	}
-
 }

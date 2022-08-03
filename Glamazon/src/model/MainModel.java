@@ -12,8 +12,11 @@ public class MainModel {
 	public Sortiment ladeSortiment() {
 		DataLoader dl = new DataLoader();
 		Sortiment s = dl.getArtikelFromDataBase();
+		
+//		for(int i = 0; i < s.getAlleArtikel().size(); i++){
+//			System.out.println(s.getAlleArtikel().get(i));
+//		}
+		
 		return s;
 	}
-	
-
 }

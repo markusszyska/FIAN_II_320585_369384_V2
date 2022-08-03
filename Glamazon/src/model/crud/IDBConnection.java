@@ -1,7 +1,9 @@
 package model.crud;
 
-import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import model.data.Artikel;
 
 public interface IDBConnection {
-	ResultSet getAllArtikel() throws Exception;
+	ArrayList<Artikel> getAllArtikel();
 }

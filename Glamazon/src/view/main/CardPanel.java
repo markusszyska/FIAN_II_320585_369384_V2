@@ -9,7 +9,7 @@ import view.kasse.KassePanel;
 import view.shopping.ShoppingPanel;
 import view.warenkorb.WarenkorbPanel;
 
-public class CardPanel extends JPanel{
+public class CardPanel extends JPanel { 
 	private ShoppingPanel shoppingPanel;
 	private WarenkorbPanel cartPanel;
 	private CardLayout cardLayout;
