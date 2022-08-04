@@ -85,8 +85,12 @@ public class Artikel {
 		this.setMwst(mwst);
 	}
 	
+	public Artikel(int id, String name, String beschreibung, double preis, int mwst) {
+		this(id, name, beschreibung, preis, "", new HashSet<String>(), mwst);
+	}
+	
 	public Artikel(String name) {
-		this(-1, name, "", 0.0, "", new HashSet<String>(), 0);
+		this(-1, name, "", 0.0, 0);
 	}
 	
 	public Artikel() {

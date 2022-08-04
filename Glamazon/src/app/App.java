@@ -1,25 +1,41 @@
 package app;
 
 import java.awt.EventQueue;
+import java.util.ArrayList;
+import java.util.List;
 
 import controller.MainController;
+import model.crud.DataLoader;
+import model.crud.FileHandler;
 import model.data.Artikel;
+import model.data.Sortiment;
 
 public class App {
 	public static void main(String[] args) {
 		
-		Artikel a = new Artikel();
-		Artikel b = a.clone();
+		FileHandler fh = new FileHandler();
 		
-		boolean ergebnis = a.equals(b);
-
-		System.out.println(ergebnis);
-				
-		EventQueue.invokeLater(new Runnable() {			
-			@Override
-			public void run() {
-				 new MainController();				
-			}
-		});
+		String json = fh.readAsString("./DB/artikel-liste.json");
+		System.out.println(json);
+		
+//		DataLoader dl = new DataLoader();
+//		
+//		Sortiment sortiment = dl.getArtikelFromDataBase();
+//		
+//		// Enhanced For-Loop
+//		for(Artikel artikel : sortiment.getAlleArtikel()) {
+//			System.out.println(artikel);
+//		}
+		
+//		for(int i = 0; i < artikel_liste.size(); i++) {
+//			System.out.println(artikel_liste.get(i));
+//		}
+		
+//		EventQueue.invokeLater(new Runnable() {			
+//			@Override
+//			public void run() {
+//				 new MainController();				
+//			}
+//		});
 	}
 }

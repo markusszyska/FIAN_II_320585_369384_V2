@@ -47,12 +47,9 @@ public class SQLiteConnection implements IDBConnection {
 				artikel.setArtName(res.getString(3));
 				artikel.setArtBeschreibung(res.getString(4));
 				artikel.setPreis(res.getDouble(5));
-				
-				System.out.println(artikel);
-				
+								
 				artikelliste.add(artikel);
-				
-				
+
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
