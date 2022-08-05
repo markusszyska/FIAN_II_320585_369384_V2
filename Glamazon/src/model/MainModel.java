@@ -10,7 +10,7 @@ public class MainModel {
 	}
 	
 	public Sortiment ladeSortiment() {
-		DataLoader dl = new DataLoader();
+		DataLoader dl = DataLoader.getInstance();
 		Sortiment s = dl.getArtikelFromDataBase();
 		
 //		for(int i = 0; i < s.getAlleArtikel().size(); i++){

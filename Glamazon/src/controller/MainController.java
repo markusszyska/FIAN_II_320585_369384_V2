@@ -6,6 +6,8 @@ import model.MainModel;
 import view.main.MainView;
 
 public class MainController {
+	private static int counter = 0;
+	
 	private MainView mainView;
 	private MainModel model;
 	
@@ -26,6 +28,7 @@ public class MainController {
 	}
 
 	public MainController() {
+		MainController.counter++;
 		this.setMainView(new MainView());
 		this.setModel(new MainModel());
 		this.getMainView().addActionListenerToStartButton(this::startShopping);

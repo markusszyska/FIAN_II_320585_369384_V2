@@ -6,11 +6,13 @@ import model.data.Artikel;
 import model.data.Sortiment;
 
 public class DataLoader {
-	/**
-	 * @Ray Bitte zum Singleton umbauen
-	 */
+	private static DataLoader instance = new DataLoader();
 	private IDBConnection con;
-
+	
+	public static DataLoader getInstance() {
+		return DataLoader.instance;
+	}
+	
 	public IDBConnection getCon() {
 		return con;
 	}
@@ -19,7 +21,7 @@ public class DataLoader {
 		this.con = con;
 	}
 
-	public DataLoader() {
+	private DataLoader() {
 		this.setCon(new SQLiteConnection());
 	}
 
