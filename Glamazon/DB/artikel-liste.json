@@ -1,7 +1,16 @@
-{
-	"ID": 4,
-	"Name": "JSON Banane",
-	"Preis": 9.99,
-	"MWST": 7,
-	"Beschreibung": "Bio Anbau"
-}
+[
+	{
+		"artikelId": 4,
+		"artName": "JSON Banane",
+		"preis": 9.99,
+		"mwst": 7,
+		"artBeschreibung": "Bio Anbau"
+	},
+	{
+		"artikelId": 999,
+		"artName": "JSON Zwiebel",
+		"preis": 3.22,
+		"mwst": 7,
+		"artBeschreibung": "Rote leckere Zwiebel"
+	}
+]
