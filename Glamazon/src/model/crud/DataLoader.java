@@ -7,32 +7,37 @@ import model.data.Sortiment;
 
 public class DataLoader {
 	private static DataLoader instance = new DataLoader();
-	private IDBConnection con;
+	private ArrayList<IDBConnection> connections;
 	
 	public static DataLoader getInstance() {
 		return DataLoader.instance;
 	}
 	
-	public IDBConnection getCon() {
-		return con;
+	private ArrayList<IDBConnection> getConnections() {
+		return connections;
 	}
 
-	public void setCon(IDBConnection con) {
-		this.con = con;
+	private void setConnections(ArrayList<IDBConnection> connections) {
+		this.connections = connections;
 	}
 
 	private DataLoader() {
-		this.setCon(new SQLiteConnection());
+		this.setConnections(new ArrayList<IDBConnection>());
+		this.getConnections().add(new SQLiteConnection());
+		this.getConnections().add(new FileHandler());
 	}
 
 	public Sortiment getArtikelFromDataBase() {
 		Sortiment sortiment = new Sortiment();
-		ArrayList<Artikel> artikelliste1 = new SQLiteConnection().getAllArtikel();
-		ArrayList<Artikel> artikelliste2 = new FileHandler().getAllArtikel();
+		ArrayList<Artikel> artikelliste = new ArrayList<Artikel>();
 		
-		artikelliste1.addAll(artikelliste2);
+		for(IDBConnection connection : this.getConnections()) {
+			artikelliste.addAll(connection.getAllArtikel());
+		}
 		
-		sortiment.setAlleArtikel(artikelliste1);	
+		
+		
+		sortiment.setAlleArtikel(artikelliste);	
 		
 		return sortiment;
 	}

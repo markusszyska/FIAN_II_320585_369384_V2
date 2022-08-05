@@ -1,11 +1,15 @@
 package model.crud;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import model.data.Artikel;
 
@@ -55,6 +59,12 @@ public class FileHandler implements IDBConnection {
 				)
 			);
 		}
+		
+		String json = this.readAsString("./DB/artikel-liste.json");
+
+		Type collectionType = new TypeToken<ArrayList<Artikel>>(){}.getType();
+		ArrayList<Artikel> jsonArtikelliste = new Gson().fromJson(json, collectionType);
+		artikel_objekte.addAll(jsonArtikelliste);
 		
 		return artikel_objekte;
 	}
