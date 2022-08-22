@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sortiment>
+	<artikel id= "1001">
+		<name>XMLArtikel1</name>
+		<beschreibung>XMLBeschreibung1</beschreibung>
+		<preis>10</preis>
+	</artikel>
+	<artikel id = "1002">
+		<name>XMLArtikel2</name>
+		<beschreibung>XMLBeschreibung2</beschreibung>
+		<preis>20</preis>
+	</artikel>
+</sortiment>
+

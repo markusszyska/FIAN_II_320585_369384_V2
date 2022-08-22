@@ -6,8 +6,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -65,8 +68,33 @@ public class FileHandler implements IDBConnection {
 		Type collectionType = new TypeToken<ArrayList<Artikel>>(){}.getType();
 		ArrayList<Artikel> jsonArtikelliste = new Gson().fromJson(json, collectionType);
 		artikel_objekte.addAll(jsonArtikelliste);
+		artikel_objekte.addAll(this.getJsonArtikelWithJackson());
 		
 		return artikel_objekte;
+	}
+	
+	public List<Artikel> getJsonArtikelWithJackson(){
+		ArrayList<Artikel> artikelliste = new ArrayList<>();
+		//Jackson
+		Path p = Paths.get("./DB/sortiment.json");
+		try {
+			String json = new String(Files.readAllBytes(p));
+			System.out.println(json);
+			
+			ObjectMapper objectMapper = new ObjectMapper();
+			CollectionType listType = objectMapper.getTypeFactory().constructCollectionType(List.class, LinkedHashMap.class);
+			List<LinkedHashMap<Object, Object>> asList = objectMapper.readValue(json, listType);
+			asList.forEach(map->{ 
+				int id = Integer.parseInt(map.get("id").toString());
+				String name = map.get("name").toString();
+				String beschreibung = map.get("beschreibung").toString();
+				double preis = Double.parseDouble(map.get("preis").toString());
+				artikelliste.add(new Artikel(id, name, beschreibung, preis, 19));
+			} );			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return artikelliste;
 	}
 	
 	

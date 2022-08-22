@@ -1,0 +1,14 @@
+[
+	{
+		"id": "2001",
+		"name":"JsonArtikel 1",
+		"beschreibung": "JsonBeschreibung 1",
+		"preis": 40
+	},
+	{
+		"id": "2002",
+		"name":"JsonArtikel 2",
+		"beschreibung": "JsonBeschreibung 2",
+		"preis": 50
+	}
+]
