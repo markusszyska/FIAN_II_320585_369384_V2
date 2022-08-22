@@ -13,6 +13,12 @@ import model.data.Artikel;
 import model.data.Sortiment;
 
 public class App {
+	
+	/*
+	 * Kommentar A
+	 */
+	
+	
 	public static void main(String[] args) {
 		
 		FileHandler fh = new FileHandler();
