@@ -1,6 +1,7 @@
 package model.crud;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import model.data.Artikel;
 import model.data.Sortiment;
@@ -44,4 +45,5 @@ public class DataLoader {
 		
 		return sortiment;
 	}
+	
 }

@@ -1,5 +1,6 @@
 package model.crud;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
@@ -8,6 +9,15 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
@@ -69,7 +79,7 @@ public class FileHandler implements IDBConnection {
 		ArrayList<Artikel> jsonArtikelliste = new Gson().fromJson(json, collectionType);
 		artikel_objekte.addAll(jsonArtikelliste);
 		artikel_objekte.addAll(this.getJsonArtikelWithJackson());
-		
+		artikel_objekte.addAll(this.getArtikelFromXml());
 		return artikel_objekte;
 	}
 	
@@ -79,7 +89,7 @@ public class FileHandler implements IDBConnection {
 		Path p = Paths.get("./DB/sortiment.json");
 		try {
 			String json = new String(Files.readAllBytes(p));
-			System.out.println(json);
+//			System.out.println(json);
 			
 			ObjectMapper objectMapper = new ObjectMapper();
 			CollectionType listType = objectMapper.getTypeFactory().constructCollectionType(List.class, LinkedHashMap.class);
@@ -96,6 +106,36 @@ public class FileHandler implements IDBConnection {
 		}
 		return artikelliste;
 	}
+	public List<Artikel> getArtikelFromXml(){
+		ArrayList<Artikel> artikelliste = new ArrayList<>();
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newDefaultInstance();
+		try {
+			dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.parse(new FileInputStream("./DB/artikel-liste.xml"));
+			doc.getDocumentElement().normalize();
+			NodeList list = doc.getElementsByTagName("artikel");
+			for (int i = 0; i < list.getLength(); i++) {
+				Node node = list.item(i);
+				if(node.getNodeType() == Node.ELEMENT_NODE) {
+					Element element = (Element)node;
+					String id = element.getAttribute("id");
+					String name = element.getElementsByTagName("name").item(0).getTextContent();
+					String beschreibung = element.getElementsByTagName("beschreibung").item(0).getTextContent();
+					String preis = element.getElementsByTagName("preis").item(0).getTextContent();
+					artikelliste.add(new Artikel(Integer.parseInt(id), name, beschreibung, Double.parseDouble(preis), 19));
+				
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return artikelliste;
+	}
 	
+
 	
 }
