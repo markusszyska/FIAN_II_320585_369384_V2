@@ -3,13 +3,15 @@ package model.data;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.swing.ImageIcon;
+
 public class Artikel {
 	// Attribute (immer private!)
 	private int artikelId;
 	private String artName;
 	private String artBeschreibung;
 	private double preis;
-	// private ImageIcon icon;
+	private ImageIcon icon;
 	private String bild; // Wird spaeter ImageIcon
 	private Set<String> kategorien;
 	private int mwst;
@@ -48,12 +50,12 @@ public class Artikel {
 		this.preis = preis;
 	}
 
-	public String getBild() {
-		return bild;
+	public ImageIcon getIcon() {
+		return icon;
 	}
 
-	public void setBild(String bild) {
-		this.bild = bild;
+	public void setIcon(ImageIcon icon) {
+		this.icon = icon;
 	}
 
 	public Set<String> getKategorien() {
@@ -74,35 +76,35 @@ public class Artikel {
 
 	// Konstruktor(en) / Kaskadierender Aufruf
 	// Maximal-Konstruktor
-	public Artikel(int id, String name, String beschreibung, double preis, 
-			String bild, Set<String> kategorien, int mwst) {
+	public Artikel(int id, String name, String beschreibung, double preis,
+			ImageIcon icon, Set<String> kategorien, int mwst) {
 		this.setArtikelId(id);
 		this.setArtName(name);
 		this.setArtBeschreibung(beschreibung);
 		this.setPreis(preis);
-		this.setBild(bild);
+		this.setIcon(icon);
 		this.setKategorien(kategorien);
 		this.setMwst(mwst);
 	}
-	
+
 	public Artikel(int id, String name, String beschreibung, double preis, int mwst) {
-		this(id, name, beschreibung, preis, "", new HashSet<String>(), mwst);
+		this(id, name, beschreibung, preis, new ImageIcon(), new HashSet<String>(), mwst);
 	}
-	
+
 	public Artikel(String name) {
 		this(-1, name, "", 0.0, 0);
 	}
-	
+
 	public Artikel() {
 		this("");
 	}
-	
+
 	// Standard-Methoden
 	@Override
 	public String toString() {
 		return "Artikel [getArtikelId()=" + getArtikelId() + ", getArtName()=" + getArtName()
 				+ ", getArtBeschreibung()=" + getArtBeschreibung() + ", getPreis()=" + getPreis() + ", getBild()="
-				+ getBild() + ", getKategorien()=" + getKategorien() + ", getMwst()=" + getMwst() + "]";
+				+ getIcon() + ", getKategorien()=" + getKategorien() + ", getMwst()=" + getMwst() + "]";
 	}
 
 	public boolean equals(Artikel artikel) {
@@ -117,29 +119,30 @@ public class Artikel {
 		}
 		return ergebnis;
 	}
-	
+
+	@Override
 	public Artikel clone() {
 		return new Artikel(
-				this.getArtikelId(), 
-				this.getArtName(), 
+				this.getArtikelId(),
+				this.getArtName(),
 				this.getArtBeschreibung(),
 				this.getPreis(),
-				this.getBild(),
+				this.getIcon(),
 				this.getKategorien(),
 				this.getMwst()
 		);
 	}
-	
-	
+
+
 //	@Override
 //	public boolean equals(Object obj) {
 //		boolean ergebnis = false;
 //		if(this == obj) {
 //			return true;
 //		}
-//		
+//
 //		if(obj instanceof Artikel) {
-//			
+//
 //			Artikel artikel = (Artikel) obj;
 //			if(
 //					this.getArtikelId() == artikel.getArtikelId() &&
@@ -150,10 +153,10 @@ public class Artikel {
 //					ergebnis = true;
 //				}
 //		}
-//		
+//
 //		return ergebnis;
 //	}
-	
+
 	// Funktionalität
-	
+
 }

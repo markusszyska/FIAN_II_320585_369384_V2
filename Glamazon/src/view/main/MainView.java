@@ -1,10 +1,11 @@
 package view.main;
 
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JFrame;
 
-import view.shopping.ShoppingPanel;
+import model.data.Artikel;
 
 public class MainView extends JFrame {
 
@@ -40,7 +41,7 @@ public class MainView extends JFrame {
 	public void addActionListenerToStartButton(ActionListener al) {
 		this.getStartPanel().addActionListenerToStartButton(al);
 	}
-	
+
 	public void addActionListenerToCartBtn(ActionListener al) {
 		this.getMainPanel().addActionListenerToCartBtn(al);
 	}
@@ -71,6 +72,10 @@ public class MainView extends JFrame {
 
 	public void showKassePanel() {
 		this.getMainPanel().showKassePanel();
+	}
+
+	public void displayArtikel(List<Artikel> artikel) {
+		this.getMainPanel().displayArtikel(artikel);
 	}
 
 }

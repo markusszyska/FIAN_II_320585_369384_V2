@@ -43,24 +43,24 @@ public class WarenkorbPanel extends JPanel {
 
 		this.setWkHeader(new WarenkorbHeader());
 		this.add(this.getWkHeader());
-		
+
 		this.setCartItems(new ArrayList<>());
 		for (int i = 0; i < 10; i++) {
 			this.getCartItems().add(new WarenkorbPanelItem());
 		}
 		this.setCartPanel(new JPanel());
 		this.getCartPanel().setLayout(new GridLayout(this.getCartItems().size(), 0));
-		
+
 		JScrollPane scrollPane = new JScrollPane(this.getCartPanel());
 		scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 		scrollPane.setBounds(0, 40, 1008, 540);
 		this.add(scrollPane);
-		
+
 //		this.getCartItems().stream().forEach(item-> this.getCartPanel().add(item));
-		for (int i = 0; i < this.getCartItems().size(); i++) {
-			this.getCartPanel().add(this.getCartItems().get(i));
+		for (WarenkorbPanelItem element : this.getCartItems()) {
+			this.getCartPanel().add(element);
 		}
-		
+
 	}
 
 	public void addActionListenerToBtnKasse(ActionListener al) {

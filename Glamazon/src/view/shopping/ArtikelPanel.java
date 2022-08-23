@@ -3,6 +3,7 @@ package view.shopping;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -71,46 +72,54 @@ public class ArtikelPanel extends JPanel {
 		this.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(112,128,144), null));
 		this.setPreferredSize(new Dimension(980, 110));
 		this.setLayout(null);
-		
+
 		this.setLblProductPicture(new JLabel("Bild"));
 		this.getLblProductPicture().setBackground(Color.orange);
 		this.getLblProductPicture().setBounds(2, 2, 115, 106);
 		this.getLblProductPicture().setOpaque(true);
 		this.add(this.getLblProductPicture());
-		
+
 		this.setLblProductName(new JLabel("Produktname"));
 		this.getLblProductName().setBounds(122, 2, 73, 23);
 		this.add(this.getLblProductName());
-		
+
 		this.setLblProductText(new JLabel("Produkttext"));
 		this.getLblProductText().setBounds(122, 27, 606, 81);
 		this.getLblProductText().setBackground(Color.orange);
 		this.getLblProductText().setOpaque(true);
 		this.add(this.getLblProductText());
-		
+
 		JLabel lblPreisTitel = new JLabel("Einzelpreis");
 		lblPreisTitel.setBounds(738, 48, 64, 14);
 		this.add(lblPreisTitel);
-		
+
 		this.setLblPreis(new JLabel("0.0"));
 		this.getLblPreis().setBounds(812,48,46,14);
 		this.add(this.getLblPreis());
-		
+
 		this.setBtnWarenkorb(new JButton("Warenkorb"));
 		this.getBtnWarenkorb().setBounds(868,76,110,23);
 		this.add(this.getBtnWarenkorb());
-		
+
 		SpinnerNumberModel model = new SpinnerNumberModel(0, 0, 100, 1);
 		this.setSpinner(new JSpinner(model));
 		this.getSpinner().setBounds(907, 27, 50, 20);
-		this.add(this.getSpinner());		
+		this.add(this.getSpinner());
 	}
-	
+
 	public ArtikelPanel(String bild,String artikelName ,String produktText, double preis) {
 		this();
 		this.getLblProductPicture().setText(bild);
 		this.getLblProductName().setText(artikelName);
 		this.getLblProductText().setText(produktText);
-		this.getLblPreis().setText("€ " + preis);		
+		this.getLblPreis().setText("€ " + preis);
+	}
+	
+	public ArtikelPanel(ImageIcon icon,String artikelName ,String produktText, double preis) {
+		this();
+		this.getLblProductPicture().setIcon(icon);
+		this.getLblProductName().setText(artikelName);
+		this.getLblProductText().setText(produktText);
+		this.getLblPreis().setText("€ " + preis);
 	}
 }

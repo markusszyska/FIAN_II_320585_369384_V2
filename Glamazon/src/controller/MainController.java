@@ -6,11 +6,10 @@ import model.MainModel;
 import view.main.MainView;
 
 public class MainController {
-	private static int counter = 0;
-	
+
 	private MainView mainView;
 	private MainModel model;
-	
+
 	public MainView getMainView() {
 		return mainView;
 	}
@@ -18,7 +17,7 @@ public class MainController {
 	public void setMainView(MainView mainView) {
 		this.mainView = mainView;
 	}
-	
+
 	public MainModel getModel() {
 		return model;
 	}
@@ -28,7 +27,6 @@ public class MainController {
 	}
 
 	public MainController() {
-		MainController.counter++;
 		this.setMainView(new MainView());
 		this.setModel(new MainModel());
 		this.getMainView().addActionListenerToStartButton(this::startShopping);
@@ -37,8 +35,7 @@ public class MainController {
 		this.getMainView().addActionListenerToBtnKasse(this::showKassePanel);
 		this.getMainView().getMainPanel().getMenuPanel().getMenuList().get(0).addActionListener(this::kat1);
 		this.getMainView().getMainPanel().getMenuPanel().getMenuList().get(1).addActionListener(this::kat2);
-		
-		this.getModel().ladeSortiment();
+		this.getMainView().displayArtikel(this.getModel().getSortiment().getAlleArtikel());
 	}
 
 	private void startShopping(ActionEvent e) {
@@ -58,13 +55,13 @@ public class MainController {
 	}
 
 	private void kat1(ActionEvent e) {
-		this.getMainView().getMainPanel().getCardPanel().getShoppingPanel().showSearchResults("Kat1 ", "Kat1 ", "Kat1 ",
-				0);
+//		this.getMainView().getMainPanel().getCardPanel().getShoppingPanel().showSearchResults("Kat1 ", "Kat1 ", "Kat1 ",
+//				0);
 	}
 
 	private void kat2(ActionEvent e) {
-		this.getMainView().getMainPanel().getCardPanel().getShoppingPanel().showSearchResults("Kat2 ", "Kat2 ", "Kat2 ",
-				0);
+//		this.getMainView().getMainPanel().getCardPanel().getShoppingPanel().showSearchResults("Kat2 ", "Kat2 ", "Kat2 ",
+//				0);
 	}
 
 }

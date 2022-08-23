@@ -66,15 +66,15 @@ public class HeaderPanel extends JPanel {
 		this.setBtnSuchen(new JButton("Suchen"));
 		this.getBtnSuchen().setPreferredSize(new Dimension(90, 90));
 		this.add(this.getBtnSuchen());
-		
+
 		this.setBtnWarenkorb(new JButton("WK"));
 		this.getBtnWarenkorb().setPreferredSize(new Dimension(90,90));
 		this.add(this.getBtnWarenkorb());
-		
+
 
 	}
 	public void addActionListenerToCartBtn(ActionListener al) {
-		this.getBtnWarenkorb().addActionListener(al);	
+		this.getBtnWarenkorb().addActionListener(al);
 	}
 
 	public void addActionListenerToBtnSuchen(ActionListener al) {

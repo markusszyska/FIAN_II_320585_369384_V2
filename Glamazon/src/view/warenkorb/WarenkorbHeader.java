@@ -1,7 +1,6 @@
 package view.warenkorb;
 
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -29,25 +28,25 @@ public class WarenkorbHeader extends JPanel {
 	public WarenkorbHeader() {
 		this.setBounds(0, 0, 1008, 40);
 		this.setLayout(null);
-		
+
 		var lbl = new JLabel("Warenkorb");
 		lbl.setBounds(0, 0, 691, 40);
 		this.add(lbl);
-		
+
 		this.setLblPreisTotal(new JLabel("Preis Total: "));
 		this.getLblPreisTotal().setBounds(691, 0, 195, 40);
 		this.add(this.getLblPreisTotal());
-		
+
 		this.setBtnZurKasse(new JButton("Zur Kasse"));
 		this.getBtnZurKasse().setBounds(907, 9, 100, 23);
-		this.add(this.getBtnZurKasse());		
-		
+		this.add(this.getBtnZurKasse());
+
 	}
 
 	public void addActionListenerToBtnKasse(ActionListener al) {
-		this.getBtnZurKasse().addActionListener(al);	
+		this.getBtnZurKasse().addActionListener(al);
 	}
-	
-	
-	
+
+
+
 }

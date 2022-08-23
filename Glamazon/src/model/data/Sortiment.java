@@ -12,7 +12,7 @@ public class Sortiment {
 	public void setAlleArtikel(ArrayList<Artikel> alleArtikel) {
 		this.alleArtikel = alleArtikel;
 	}
-	
+
 	public Sortiment() {
 		this.setAlleArtikel(new ArrayList<Artikel>());
 	}

@@ -4,19 +4,19 @@ import model.crud.DataLoader;
 import model.data.Sortiment;
 
 public class MainModel {
-	
+
+	private Sortiment sortiment;
+
+	public Sortiment getSortiment() {
+		return sortiment;
+	}
+
+	public void setSortiment(Sortiment sortiment) {
+		this.sortiment = sortiment;
+	}
+
 	public MainModel() {
-			
+		this.setSortiment(DataLoader.getInstance().getArtikelFromDataBase());
 	}
-	
-	public Sortiment ladeSortiment() {
-		DataLoader dl = DataLoader.getInstance();
-		Sortiment s = dl.getArtikelFromDataBase();
-		
-//		for(int i = 0; i < s.getAlleArtikel().size(); i++){
-//			System.out.println(s.getAlleArtikel().get(i));
-//		}
-		
-		return s;
-	}
+
 }
