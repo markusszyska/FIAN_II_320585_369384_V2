@@ -5,11 +5,18 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import model.crud.utility.ImageUtility;
 
 public class HeaderPanel extends JPanel {
 	private JLabel logo;
@@ -69,6 +76,13 @@ public class HeaderPanel extends JPanel {
 
 		this.setBtnWarenkorb(new JButton("WK"));
 		this.getBtnWarenkorb().setPreferredSize(new Dimension(90,90));
+		try {
+			ImageIcon icon = new ImageIcon(Files.readAllBytes(Paths.get(this.getClass().getResource("/wk.png").toURI())));
+			ImageIcon resized = new ImageIcon(icon.getImage().getScaledInstance(80, 80, 0));
+			this.getBtnWarenkorb().setIcon(resized);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		this.add(this.getBtnWarenkorb());
 
 

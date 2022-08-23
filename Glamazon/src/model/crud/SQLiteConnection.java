@@ -38,7 +38,7 @@ public class SQLiteConnection implements IDBConnection {
 
 		try {
 			Statement stm = this.getConnection().createStatement();
-			String sql = "SELECT * FROM artikel,bild WHERE artikel.ar_id = bild.bi_id";
+			String sql = "SELECT * FROM artikel,bild WHERE artikel.ar_id = bild.ar_id";
 			ResultSet res = stm.executeQuery(sql);
 			while(res.next()) {
 				Artikel artikel = new Artikel();
@@ -47,10 +47,9 @@ public class SQLiteConnection implements IDBConnection {
 				artikel.setArtName(res.getString(3));
 				artikel.setArtBeschreibung(res.getString(4));
 				artikel.setPreis(res.getDouble(5));
-//				artikel.setIcon(ImageUtility.decodeImage(res.getString("bild")));
+				artikel.setIcon(ImageUtility.decodeImage(res.getString("bild")));
 
 				artikelliste.add(artikel);
-
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -65,17 +64,13 @@ public class SQLiteConnection implements IDBConnection {
 			PreparedStatement pstm = this.getConnection().prepareStatement(sql);
 			pstm.setString(1, encodedImage);
 			pstm.setInt(2, artikelId);
-			System.out.println(pstm.executeUpdate());
+			pstm.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 	}
-	public static void main(String[] args) {
-		SQLiteConnection con = new SQLiteConnection();
-		con.addImageToDB(ImageUtility.encodeImage("bass.png"), 1);
-		
-		
-	}
+	
+
 
 }
