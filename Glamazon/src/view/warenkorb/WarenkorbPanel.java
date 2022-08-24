@@ -8,6 +8,8 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import model.data.Warenkorb;
+
 public class WarenkorbPanel extends JPanel {
 	private WarenkorbHeader wkHeader;
 	private JPanel cartPanel;
@@ -56,7 +58,7 @@ public class WarenkorbPanel extends JPanel {
 		scrollPane.setBounds(0, 40, 1008, 540);
 		this.add(scrollPane);
 
-//		this.getCartItems().stream().forEach(item-> this.getCartPanel().add(item));
+//		this.getCartItems().forEach(item-> this.getCartPanel().add(item));
 		for (WarenkorbPanelItem element : this.getCartItems()) {
 			this.getCartPanel().add(element);
 		}
@@ -65,6 +67,21 @@ public class WarenkorbPanel extends JPanel {
 
 	public void addActionListenerToBtnKasse(ActionListener al) {
 		this.getWkHeader().addActionListenerToBtnKasse(al);
+	}
+
+	public void aktualisiereWarenKorbView(Warenkorb warenkorb) {
+		this.getCartPanel().removeAll();
+		this.getCartItems().clear();
+		System.out.println(warenkorb.getPositionen());
+		warenkorb.getPositionen().forEach(pos -> this.getCartItems().add(new WarenkorbPanelItem(pos)));
+		if (this.getCartItems().size() > 0)
+			this.getCartPanel().setLayout(new GridLayout(this.getCartItems().size(), 0));
+		else
+			this.getCartPanel().setLayout(new GridLayout(1, 0));
+		this.getCartItems().forEach(item->this.getCartPanel().add(item));
+		System.out.println(this.getCartItems().size());
+		this.getCartPanel().revalidate();
+		this.getCartPanel().repaint();
 	}
 
 }

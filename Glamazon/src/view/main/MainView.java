@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.swing.JFrame;
 
 import model.data.Artikel;
+import model.data.Warenkorb;
 
 public class MainView extends JFrame {
 
@@ -55,6 +56,14 @@ public class MainView extends JFrame {
 		this.getMainPanel().addActionListenerToBtnKasse(al);
 	}
 
+	public void addActionListenerToArtikelPanel(ActionListener al) {
+		this.getMainPanel().addActionListenerToArtikelPanel(al);
+	}
+
+	public void addActionListenerToKategorieBtn(ActionListener al) {
+		this.getMainPanel().addActionListenerToKategorieBtn(al);
+	}
+
 	public void showMainPanel() {
 		this.setContentPane(this.getMainPanel());
 	}
@@ -79,12 +88,12 @@ public class MainView extends JFrame {
 		this.getMainPanel().displayArtikel(artikel);
 	}
 
-	public void addActionListenerToKategorieBtn(ActionListener al) {
-		this.getMainPanel().addActionListenerToKategorieBtn(al);		
+	public void addKategorieBtn(Set<String> alleKategorien) {
+		this.getMainPanel().addKategorieBtn(alleKategorien);
 	}
 
-	public void addKategorieBtn(Set<String> alleKategorien) {		
-		this.getMainPanel().addKategorieBtn(alleKategorien);
+	public void aktualisiereWarenKorbView(Warenkorb warenkorb) {
+		this.getMainPanel().aktualisiereWarenKorbView(warenkorb);
 	}
 
 }

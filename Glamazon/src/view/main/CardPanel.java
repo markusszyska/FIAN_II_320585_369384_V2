@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import model.data.Artikel;
+import model.data.Warenkorb;
 import view.kasse.KassePanel;
 import view.shopping.ShoppingPanel;
 import view.warenkorb.WarenkorbPanel;
@@ -78,6 +79,12 @@ public class CardPanel extends JPanel {
 	public void displayArtikel(List<Artikel> artikel) {
 		this.getShoppingPanel().displayArtikel(artikel);
 		
+	}
+	public void addActionListenerToArtikelPanel(ActionListener al) {
+		this.getShoppingPanel().addActionListenerToArtikelPanel(al);	
+	}
+	public void aktualisiereWarenKorbView(Warenkorb warenkorb) {
+		this.getCartPanel().aktualisiereWarenKorbView(warenkorb);		
 	}
 
 

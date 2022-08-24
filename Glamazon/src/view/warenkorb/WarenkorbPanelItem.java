@@ -3,11 +3,14 @@ package view.warenkorb;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+
+import model.data.WarenkorbPosition;
 
 public class WarenkorbPanelItem extends JPanel{
 	private JLabel lblProductPicture;
@@ -103,7 +106,15 @@ public class WarenkorbPanelItem extends JPanel{
 		this.getLblGesamtPreis().setBounds(803, 118, 143, 23);
 		this.add(this.getLblGesamtPreis());
 	}
-
+	public WarenkorbPanelItem(WarenkorbPosition position) {
+		this();
+		this.getLblProductPicture().setIcon(position.getArtikel().getIcon());
+		this.getLblProductName().setText(position.getArtikel().getArtName());
+		this.getLblProductText().setText(position.getArtikel().getArtBeschreibung());
+		this.getLblEinzelpreis().setText("" +position.getArtikel().getPreis());
+		this.getLblGesamtPreis().setText("" + position.getGesamtpreis());
+		this.getAnzahlArtikel().setValue(position.getAnzahl());
+	}
 
 
 }

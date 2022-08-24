@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import model.MainModel;
 import model.data.Artikel;
 import view.main.MainView;
+import view.shopping.ArtikelPanel;
 
 public class MainController {
 
@@ -40,6 +41,7 @@ public class MainController {
 		this.getMainView().addKategorieBtn(this.getModel().getAlleKategorien());
 		this.getMainView().addActionListenerToKategorieBtn(this::filterKategorie);
 		this.getMainView().displayArtikel(this.getModel().getSortiment().getAlleArtikel());
+		this.getMainView().addActionListenerToArtikelPanel(this::addItemToCart);
 	}
 
 	private void startShopping(ActionEvent e) {
@@ -57,14 +59,24 @@ public class MainController {
 	private void showKassePanel(ActionEvent e) {
 		this.getMainView().showKassePanel();
 	}
-
+	
+	private void addItemToCart(ActionEvent e) {
+		JButton source = (JButton)e.getSource();
+		ArtikelPanel parent = (ArtikelPanel)source.getParent();
+		String productName = parent.getLblProductName().getText();
+		Integer anzahl = (Integer)parent.getSpinner().getValue();
+		this.getModel().addItemToCart(productName, anzahl);
+		this.getMainView().aktualisiereWarenKorbView(this.getModel().getWarenkorb());		
+	}
+	
 	private void filterKategorie(ActionEvent e) {
+		this.getMainView().showShoppingPanel();
 		String btnText = ((JButton) e.getSource()).getText();
 		if (!btnText.equals("Alle Artikel"))
 			this.getMainView().displayArtikel(this.getModel().filterSortimentKategorie(btnText));
 		else 
-			this.getMainView().displayArtikel(this.getModel().getAlleArtikel());
-		
+			this.getMainView().displayArtikel(this.getModel().getAlleArtikel());	
+		this.getMainView().addActionListenerToArtikelPanel(this::addItemToCart);
 	}
 
 }

@@ -2,6 +2,7 @@ package view.shopping;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,6 +90,10 @@ public class ShoppingPanel extends JPanel {
 		this.revalidate();
 		this.repaint();
 		
+	}
+
+	public void addActionListenerToArtikelPanel(ActionListener al) {
+		this.getArtikelList().forEach(item-> item.getBtnWarenkorb().addActionListener(al));
 	}
 
 }
