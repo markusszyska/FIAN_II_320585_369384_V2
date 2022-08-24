@@ -1,3 +1,3 @@
-ID;Name;Preis;MWST;Beschreibung
-7;Banane;9,99;7;Bio Anbau
-8;Apfel;1,95;7;Gala
+ID;Name;Preis;MWST;Beschreibung;Kategorie
+7;Banane;9,99;7;Bio Anbau;Kategorie 2
+8;Apfel;1,95;7;Gala;Kategorie 4

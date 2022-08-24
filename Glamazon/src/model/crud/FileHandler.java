@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.ImageIcon;
 import javax.xml.XMLConstants;
@@ -64,8 +65,10 @@ public class FileHandler implements IDBConnection {
 			String[] parts = artikel_liste.get(i).split(";");
 			ImageIcon icon = ImageUtility.decodeImage(ImageUtility.encodeImage("schadel.png"));
 			if (parts.length > 0) {
+				Set<String> kat = new HashSet<>();
+				kat.add(parts[5]);
 				artikel_objekte.add(new Artikel(Integer.parseInt(parts[0]), parts[1], parts[4],
-						Double.parseDouble(parts[2].replace(',', '.')), icon, new HashSet<>(),
+						Double.parseDouble(parts[2].replace(',', '.')), icon, kat,
 						Integer.parseInt(parts[3])));
 			}
 		}
@@ -96,7 +99,9 @@ public class FileHandler implements IDBConnection {
 				ImageIcon icon = ImageUtility.decodeImage(map.get("icon").toString());
 				String beschreibung = map.get("beschreibung").toString();
 				double preis = Double.parseDouble(map.get("preis").toString());
-				artikelliste.add(new Artikel(id, name, beschreibung, preis, icon, new HashSet<>(), 19));
+				Set<String> kat = new HashSet<>();
+				kat.add(map.get("kategorie").toString());
+				artikelliste.add(new Artikel(id, name, beschreibung, preis, icon, kat, 19));
 			});
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -123,8 +128,10 @@ public class FileHandler implements IDBConnection {
 					ImageIcon icon = ImageUtility.decodeImage(iconBase64);
 					String beschreibung = element.getElementsByTagName("beschreibung").item(0).getTextContent();
 					String preis = element.getElementsByTagName("preis").item(0).getTextContent();
+					Set<String> kat = new HashSet<>();
+					kat.add(element.getElementsByTagName("kategorie").item(0).getTextContent());
 					artikelliste.add(new Artikel(Integer.parseInt(id), name, beschreibung, Double.parseDouble(preis),
-							icon, new HashSet<>(), 19));
+							icon, kat, 19));
 				}
 			}
 		} catch (Exception e) {

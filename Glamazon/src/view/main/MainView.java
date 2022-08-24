@@ -2,6 +2,7 @@ package view.main;
 
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.JFrame;
 
@@ -76,6 +77,14 @@ public class MainView extends JFrame {
 
 	public void displayArtikel(List<Artikel> artikel) {
 		this.getMainPanel().displayArtikel(artikel);
+	}
+
+	public void addActionListenerToKategorieBtn(ActionListener al) {
+		this.getMainPanel().addActionListenerToKategorieBtn(al);		
+	}
+
+	public void addKategorieBtn(Set<String> alleKategorien) {		
+		this.getMainPanel().addKategorieBtn(alleKategorien);
 	}
 
 }

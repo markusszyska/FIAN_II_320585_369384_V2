@@ -1,9 +1,11 @@
 package view.main;
 
 import java.awt.Color;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -23,22 +25,17 @@ public class MenuPanel extends JPanel{
 		this.setBounds(0, 120, 1024, 30);
 		this.setBackground(Color.DARK_GRAY);
 		this.setOpaque(true);
-
 		this.setMenuList(new ArrayList<>());
-		/**
-		 * @toDo
-		 * Benannte Kategorien
-		 */
-		String[] menues = {"Kat 1", "Kat 2" , "Kat 3"};
-
-		Arrays.stream(menues).forEach(s-> this.getMenuList().add(new JButton(s)));
-
+	}
+	public void addKategorieBtn(Set<String> alleKategorien) {
+		alleKategorien.forEach(s-> this.getMenuList().add(new JButton(s)));
+		this.getMenuList().add(new JButton("Alle Artikel"));
 		this.getMenuList().forEach(item->this.add(item));
-
-
-
-
-
+		this.revalidate();
+		this.repaint();
+	}
+	public void addActionListenerToKategorieBtn(ActionListener al) {
+		this.getMenuList().forEach(btn->btn.addActionListener(al));
 	}
 
 }

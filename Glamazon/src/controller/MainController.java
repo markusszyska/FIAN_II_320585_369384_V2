@@ -1,8 +1,12 @@
 package controller;
 
 import java.awt.event.ActionEvent;
+import java.util.List;
+
+import javax.swing.JButton;
 
 import model.MainModel;
+import model.data.Artikel;
 import view.main.MainView;
 
 public class MainController {
@@ -33,8 +37,8 @@ public class MainController {
 		this.getMainView().addActionListenerToCartBtn(this::showCartPanel);
 		this.getMainView().addActionListenerToBtnSuchen(this::showShoppingPanel);
 		this.getMainView().addActionListenerToBtnKasse(this::showKassePanel);
-		this.getMainView().getMainPanel().getMenuPanel().getMenuList().get(0).addActionListener(this::kat1);
-		this.getMainView().getMainPanel().getMenuPanel().getMenuList().get(1).addActionListener(this::kat2);
+		this.getMainView().addKategorieBtn(this.getModel().getAlleKategorien());
+		this.getMainView().addActionListenerToKategorieBtn(this::filterKategorie);
 		this.getMainView().displayArtikel(this.getModel().getSortiment().getAlleArtikel());
 	}
 
@@ -54,14 +58,13 @@ public class MainController {
 		this.getMainView().showKassePanel();
 	}
 
-	private void kat1(ActionEvent e) {
-//		this.getMainView().getMainPanel().getCardPanel().getShoppingPanel().showSearchResults("Kat1 ", "Kat1 ", "Kat1 ",
-//				0);
-	}
-
-	private void kat2(ActionEvent e) {
-//		this.getMainView().getMainPanel().getCardPanel().getShoppingPanel().showSearchResults("Kat2 ", "Kat2 ", "Kat2 ",
-//				0);
+	private void filterKategorie(ActionEvent e) {
+		String btnText = ((JButton) e.getSource()).getText();
+		if (!btnText.equals("Alle Artikel"))
+			this.getMainView().displayArtikel(this.getModel().filterSortimentKategorie(btnText));
+		else 
+			this.getMainView().displayArtikel(this.getModel().getAlleArtikel());
+		
 	}
 
 }

@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import model.crud.utility.ImageUtility;
 import model.data.Artikel;
@@ -35,10 +37,15 @@ public class SQLiteConnection implements IDBConnection {
 	@Override
 	public ArrayList<Artikel> getAllArtikel() {
 		ArrayList<Artikel> artikelliste = new ArrayList<>();
-
+		/**
+		 * @todo
+		 * Extra Abfrage fuer Kategorien.
+		 * Artikel kann in mehreren Kategorien sein
+		 */
 		try {
 			Statement stm = this.getConnection().createStatement();
-			String sql = "SELECT * FROM artikel,bild WHERE artikel.ar_id = bild.ar_id";
+			//String sql = "SELECT * FROM artikel,bild,artikel_kategorie WHERE artikel.ar_id = bild.ar_id";
+			String sql = "SELECT * FROM artikel,bild,artikel_kategorie,kategorie WHERE artikel.ar_id = bild.ar_id AND artikel.ar_id = artikel_kategorie.ar_id AND artikel_kategorie.ka_id = kategorie.ka_id";
 			ResultSet res = stm.executeQuery(sql);
 			while(res.next()) {
 				Artikel artikel = new Artikel();
@@ -48,7 +55,9 @@ public class SQLiteConnection implements IDBConnection {
 				artikel.setArtBeschreibung(res.getString(4));
 				artikel.setPreis(res.getDouble(5));
 				artikel.setIcon(ImageUtility.decodeImage(res.getString("bild")));
-
+				Set<String> kat = new HashSet<>();
+				kat.add(res.getString(12));	
+				artikel.setKategorien(kat);
 				artikelliste.add(artikel);
 			}
 		} catch(SQLException e) {

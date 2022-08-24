@@ -12,7 +12,6 @@ public class Artikel {
 	private String artBeschreibung;
 	private double preis;
 	private ImageIcon icon;
-	private String bild; // Wird spaeter ImageIcon
 	private Set<String> kategorien;
 	private int mwst;
 

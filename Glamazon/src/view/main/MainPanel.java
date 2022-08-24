@@ -2,6 +2,7 @@ package view.main;
 
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.JPanel;
 
@@ -66,6 +67,14 @@ public class MainPanel extends JPanel{
 	}
 	public void displayArtikel(List<Artikel> artikel) {
 		this.getCardPanel().displayArtikel(artikel);
+		
+	}
+	public void addKategorieBtn(Set<String> alleKategorien) {
+		this.getMenuPanel().addKategorieBtn(alleKategorien);
+		
+	}
+	public void addActionListenerToKategorieBtn(ActionListener al) {
+		this.getMenuPanel().addActionListenerToKategorieBtn(al);
 		
 	}
 
