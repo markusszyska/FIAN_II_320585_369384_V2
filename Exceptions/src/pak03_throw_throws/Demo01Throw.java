@@ -9,16 +9,32 @@ public class Demo01Throw {
 	 * geworfen werden.
 	 */
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 
 //		throw
 //		throws
-//		int zahl = 1;
-//
-//		if(zahl == 1) {
-//			throw new ArrayIndexOutOfBoundsException();
-//		}
-
+		int zahl = 1;
+		
+		/*
+		 * unchecked:
+		 * eine unchecked Exception kann ohne Fehlerbehandlung geworfen werden.
+		 */
+		if(zahl == 1) {
+			throw new ArrayIndexOutOfBoundsException();
+		}
+		/*
+		 * checked:
+		 * Bei einer checked Exception wird die Fehlerbehandlung
+		 * vom Compiler erzwungen. 
+		 */
+		if(zahl == 1) {
+			try {
+				throw new Exception();				
+			}catch(Exception e) {
+				
+			}			
+		}
+				
 //		dividierenOhneTryCatch(1,0);
 		dividierenMitTryCatch(1, 0);
 		System.out.println("Programmende");
